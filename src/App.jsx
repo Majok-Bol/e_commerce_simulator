@@ -6,14 +6,7 @@ import Payments from "./components/payments";
 import Cart from "./components/cart";
 
 export default function App() {
-  //fetch data from an api
-  //display on the ui
-  //filter goods by category
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products/")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
+
   return (
     <>
       <h1>E-COMMERCE SIMULATOR</h1>
