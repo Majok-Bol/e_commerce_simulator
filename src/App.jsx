@@ -7,12 +7,15 @@ import Cart from "./components/cart";
 //parent component
 export default function App() {
   const [cartItems, setCartItems] = useState([]);
-  //function to handle add to cart
+function handleRemoveFromCart(index) {
+  console.log("Removing this item: ",index);
+  setCartItems((prevCart) => prevCart.filter((_, i) => i !== index));
+}
+
   function handleAddToCart(item) {
-    console.log("Added: ", item);
-    console.log(`Add this product: ${item.id} to cart`);
-    setCartItems([...cartItems,item]);
+    setCartItems((prevCart) => [...prevCart, item]); // ✅ functional update
   }
+
   return (
     <>
       <h1>E-COMMERCE SIMULATOR</h1>
@@ -39,7 +42,7 @@ export default function App() {
           path="/products"
           element={<Products onAddToCart={handleAddToCart} />}
         />
-        <Route path="/cart" element={<Cart cart={cartItems} />} />
+        <Route path="/cart" element={<Cart cart={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/payments" element={<Payments />} />
       </Routes>

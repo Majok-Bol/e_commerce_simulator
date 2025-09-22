@@ -58,10 +58,10 @@ export default function Products({onAddToCart}) {
           );
         })}
       </select>
-      {filteredProducts.map((item) => {
+      {filteredProducts.map((item,index) => {
         // console.log(item);
         return (
-          <div key={item.id}>
+     <div key={`${item.id}-${index}`}>
             <h2>{item.title}</h2>
             <img src={item.image} />
             <p>{item.description}</p>
