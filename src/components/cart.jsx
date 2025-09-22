@@ -1,5 +1,5 @@
 //handle cart items
-export default function Cart({ cart,onRemoveFromCart }) {
+export default function Cart({ cart,onRemoveFromCart,onOrderItem }) {
 console.log("Cart data: ",cart)
 
   return (
@@ -15,7 +15,7 @@ console.log("Cart data: ",cart)
           <p>
             <strong>Rating</strong> {item.rating.rate} ⭐
           </p>
-          <button onClick={()=>onOrderItem()}>Order Item</button>
+          <button onClick={()=>onOrderItem(item,index)}>Order Item</button>
           <button onClick={()=>onRemoveFromCart(index)}>Remove from Cart</button>
         </div>
       ))}

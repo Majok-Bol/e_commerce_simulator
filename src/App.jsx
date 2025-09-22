@@ -7,6 +7,7 @@ import Cart from "./components/cart";
 //parent component
 export default function App() {
   const [cartItems, setCartItems] = useState([]);
+  const[orders,setOrders]=useState([]);
 function handleRemoveFromCart(index) {
   console.log("Removing this item: ",index);
   setCartItems((prevCart) => prevCart.filter((_, i) => i !== index));
@@ -15,7 +16,13 @@ function handleRemoveFromCart(index) {
   function handleAddToCart(item) {
     setCartItems((prevCart) => [...prevCart, item]); // ✅ functional update
   }
+function handleOrderItem(item,index){
+  setOrders((prevOrder)=>[...prevOrder,item]);
+  //remove item from cart after ordering
+  setCartItems((prevCart)=>prevCart.filter((_,i)=>i!==index));
 
+
+}
   return (
     <>
       <h1>E-COMMERCE SIMULATOR</h1>
@@ -24,7 +31,7 @@ function handleRemoveFromCart(index) {
         <Link to="/">Home</Link>
         <Link to="/products">products</Link>
         <Link to="/cart">Cart ({cartItems.length})</Link>
-        <Link to="/orders">orders</Link>
+        <Link to="/orders">Orders({orders.length})</Link>
         <Link to="/payments">payments</Link>
       </nav>
 
@@ -42,8 +49,8 @@ function handleRemoveFromCart(index) {
           path="/products"
           element={<Products onAddToCart={handleAddToCart} />}
         />
-        <Route path="/cart" element={<Cart cart={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />
-        <Route path="/orders" element={<Orders />} />
+        <Route path="/cart" element={<Cart cart={cartItems} onRemoveFromCart={handleRemoveFromCart} onOrderItem={handleOrderItem}/>} />
+        <Route path="/orders" element={<Orders order={orders} />} />
         <Route path="/payments" element={<Payments />} />
       </Routes>
     </>
