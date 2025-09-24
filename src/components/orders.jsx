@@ -1,5 +1,5 @@
 //handle orders
-export default function Orders({order}){
+export default function Orders({order,onRemoveOrder}){
    return(<>
         {order.map((item,index) => {
         // console.log(item);
@@ -14,6 +14,7 @@ export default function Orders({order}){
             <p>
               <strong>Rating</strong> {item.rating.rate} ⭐
             </p>
+            <button onClick={()=>onRemoveOrder(item,index)}>Remove Item</button>
           </div>
         );
       })}

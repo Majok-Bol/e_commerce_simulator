@@ -14,13 +14,18 @@ function handleRemoveFromCart(index) {
 }
 
   function handleAddToCart(item) {
-    setCartItems((prevCart) => [...prevCart, item]); // ✅ functional update
+    setCartItems((prevCart) => [...prevCart, item]);
   }
 function handleOrderItem(item,index){
   setOrders((prevOrder)=>[...prevOrder,item]);
   //remove item from cart after ordering
   setCartItems((prevCart)=>prevCart.filter((_,i)=>i!==index));
 
+
+}
+
+function handleRemoveOrder(item,index){
+  setOrders((prevOrder)=>prevOrder.filter((_,i)=>i!==index));
 
 }
   return (
@@ -50,7 +55,7 @@ function handleOrderItem(item,index){
           element={<Products onAddToCart={handleAddToCart} />}
         />
         <Route path="/cart" element={<Cart cart={cartItems} onRemoveFromCart={handleRemoveFromCart} onOrderItem={handleOrderItem}/>} />
-        <Route path="/orders" element={<Orders order={orders} />} />
+        <Route path="/orders" element={<Orders order={orders}  onRemoveOrder={handleRemoveOrder}/>} />
         <Route path="/payments" element={<Payments />} />
       </Routes>
     </>
