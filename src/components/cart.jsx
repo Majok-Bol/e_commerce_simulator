@@ -1,9 +1,11 @@
 //handle cart items
 export default function Cart({ cart,onRemoveFromCart,onOrderItem }) {
-console.log("Cart data: ",cart)
-
+if(cart.length===0){
+  return(<h2>Cart is empty</h2>)
+}
   return (
     <>
+    <h1>Cart Items</h1>
       {cart.map((item,index) => (
       <div key={`${item.id}-${index}`}>
           <h2>{item.title}</h2>

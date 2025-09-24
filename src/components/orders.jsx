@@ -1,6 +1,10 @@
 //handle orders
 export default function Orders({order,onRemoveOrder}){
+  if(order.length===0){
+    return(<h1>Order list is empty</h1>)
+  }
    return(<>
+   <h1>Ordered Items</h1>
         {order.map((item,index) => {
         // console.log(item);
         return (

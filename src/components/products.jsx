@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 //handle products
-export default function Products({onAddToCart}) {
+export default function Products({ onAddToCart }) {
   //fetch products
   //filter eg by category
 
@@ -19,13 +19,12 @@ export default function Products({onAddToCart}) {
     fetch("https://fakestoreapi.com/products/")
       .then((response) => response.json())
       .then((data) => {
-        console.log("All products data: ", data);
         setProducts(data);
         setFilteredProducts(data);
         const uniqueCategories = [
           ...new Set(data.map((product) => product.category)),
         ];
-        console.log("Unique categories: ", uniqueCategories);
+
         setCategories(uniqueCategories);
         //display products data
       })
@@ -58,10 +57,10 @@ export default function Products({onAddToCart}) {
           );
         })}
       </select>
-      {filteredProducts.map((item,index) => {
+      {filteredProducts.map((item, index) => {
         // console.log(item);
         return (
-     <div key={`${item.id}-${index}`}>
+          <div key={`${item.id}-${index}`}>
             <h2>{item.title}</h2>
             <img src={item.image} />
             <p>{item.description}</p>
@@ -71,7 +70,7 @@ export default function Products({onAddToCart}) {
             <p>
               <strong>Rating</strong> {item.rating.rate} ⭐
             </p>
-            <button onClick={() =>onAddToCart(item)}>Add to Cart</button>
+            <button onClick={() => onAddToCart(item)}>Add to Cart</button>
           </div>
         );
       })}

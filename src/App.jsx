@@ -9,24 +9,29 @@ export default function App() {
   const [cartItems, setCartItems] = useState([]);
   const[orders,setOrders]=useState([]);
 function handleRemoveFromCart(index) {
-  console.log("Removing this item: ",index);
+  alert("Item removed from cart items")
   setCartItems((prevCart) => prevCart.filter((_, i) => i !== index));
 }
 
   function handleAddToCart(item) {
+    alert(`Item added to cart\nCheck your cart items`)
     setCartItems((prevCart) => [...prevCart, item]);
   }
 function handleOrderItem(item,index){
+     alert(`Item added to Orders list\nCheck your Orders `) 
   setOrders((prevOrder)=>[...prevOrder,item]);
   //remove item from cart after ordering
   setCartItems((prevCart)=>prevCart.filter((_,i)=>i!==index));
 
-
 }
 
 function handleRemoveOrder(item,index){
+  alert("Item removed from Order list")
   setOrders((prevOrder)=>prevOrder.filter((_,i)=>i!==index));
 
+}
+function handleClearOrders(){
+  setOrders([]);
 }
   return (
     <>
@@ -56,7 +61,7 @@ function handleRemoveOrder(item,index){
         />
         <Route path="/cart" element={<Cart cart={cartItems} onRemoveFromCart={handleRemoveFromCart} onOrderItem={handleOrderItem}/>} />
         <Route path="/orders" element={<Orders order={orders}  onRemoveOrder={handleRemoveOrder}/>} />
-        <Route path="/payments" element={<Payments />} />
+        <Route path="/payments" element={<Payments order={orders} onClearOrders={handleClearOrders}/>} />
       </Routes>
     </>
   );
