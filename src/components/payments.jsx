@@ -46,7 +46,7 @@ function handlePayNow() {
 return(<>
 
    <div className="payments">
-      <h2>Ordered items</h2>
+      <h2>Item(s) to pay</h2>
   
       <ol>
   {order.map((item,index)=>{
