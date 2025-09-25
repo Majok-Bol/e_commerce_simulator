@@ -1,6 +1,73 @@
 nav{
   display:flex;
+  justify-content: space-around;
   flex-direction: row;
-  gap:2rem;
+  gap:1rem;
+  position:fixed;
+  z-index:200;
+  top:0;
+  left:0;
+  width:100%;
+  background-color: #62A1F6;
+  padding:20px;
+
+}
+a{
+  font-size: 1.3rem;
+}
+
+a,button{
+  cursor: pointer;
+}
+ a:active {
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border-radius: 10px;
+    text-decoration: underline;
+
+
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+.home-page{
+  text-align: center;
+  padding:10px;
+  font-size: 1.8rem;
+  margin:10rem;
+}
+button{
+  padding:20px;
+  margin:14px;
+  font-size: 1.4rem;
+
+
+}
+.payments{
+  font-size: 1.3rem;
+  text-align: center;
+  margin:8rem;
+}
+p{
+font-size: 1.4rem;
+}
+input{
+  padding:24px;
+}
+select{
+  font-size: 1.3rem;
+  padding:10px;
+}
+option{
+  font-size:1.3rem;
+}
+.cart-heading{
+  font-size: 1.8rem;
+  text-align: center;
+  margin:14rem;
 
 }

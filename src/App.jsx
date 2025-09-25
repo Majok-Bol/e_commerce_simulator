@@ -39,18 +39,18 @@ function handleClearOrders(){
 
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/products">products</Link>
+        <Link to="/products">Products</Link>
         <Link to="/cart">Cart ({cartItems.length})</Link>
         <Link to="/orders">Orders({orders.length})</Link>
-        <Link to="/payments">payments</Link>
+        <Link to="/payments">Payments</Link>
       </nav>
 
       <Routes>
         <Route
           path="/"
           element={
-            <div>
-              <h2>Welcome to the E-Commerce Simulator!</h2>
+            <div className="home-page">
+              <h2>Welcome to NextBuy</h2>
               <p>Explore our products and shop with ease 🚀</p>
             </div>
           }

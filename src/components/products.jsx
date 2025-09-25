@@ -32,7 +32,7 @@ export default function Products({ onAddToCart }) {
   }, []);
   return (
     <>
-      <h1>Products</h1>
+      <h1>Browse products on offer</h1>
       <select
         value={selectedCategory}
         onChange={(e) => {
@@ -60,9 +60,9 @@ export default function Products({ onAddToCart }) {
       {filteredProducts.map((item, index) => {
         // console.log(item);
         return (
-          <div key={`${item.id}-${index}`}>
+          <div key={`${item.id}-${index}`} className="card">
             <h2>{item.title}</h2>
-            <img src={item.image} />
+            <img src={item.image} alt={item.title} />
             <p>{item.description}</p>
             <p>
               <strong>Price:</strong> {item.price} $
